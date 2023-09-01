@@ -46,17 +46,18 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.white,
           showLoader: true,
           loadingText: const Text("Loading..."),
-          navigator: const Profile(
-            name: '',
-            nricFin: '',
-            companyName: '',
-            designation: '',
-            phone: '',
-            person: '',
-            place: '',
-            purpose: '',
-            inTime: '',
+          navigator:  Profile(
+            name: 'Felix',
+            nricFin: '12345678',
+            companyName: 'Digisailor',
+            designation: 'Sr. Developer',
+            phone: '9677998011',
+            person: 'Rajesh',
+            place: 'Head Quaters',
+            purpose: 'Interview',
+            inTime: '31 - 08 - 2023 10:00AM',
           ),
+          // navigator: const RegistrationPage(),
           durationInSeconds: 2,
         ));
   }

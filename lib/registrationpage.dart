@@ -305,6 +305,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         "inTime": inTime.text,
                         "emergencyContact": emergencyPhoneController.text,
                         "isHave-covidcertificate": isChecked,
+                        "termsCondition": termsConditons,
+                        "approved": approved,
                       }).whenComplete(() {
                         Navigator.push(
                             context,
