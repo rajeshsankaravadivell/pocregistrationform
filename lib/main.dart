@@ -1,7 +1,7 @@
 import 'package:easy_splash_screen/easy_splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:pocregistrationform/profile.dart';
+import 'package:pocregistrationform/registrationpage.dart';
 
 import 'firebase_options.dart';
 
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
+        title: 'JCET',
         theme: ThemeData(
           // This is the theme of your application.
           //
@@ -46,18 +46,18 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.white,
           showLoader: true,
           loadingText: const Text("Loading..."),
-          navigator:  Profile(
-            name: 'Felix',
-            nricFin: '12345678',
-            companyName: 'Digisailor',
-            designation: 'Sr. Developer',
-            phone: '9677998011',
-            person: 'Rajesh',
-            place: 'Head Quaters',
-            purpose: 'Interview',
-            inTime: '31 - 08 - 2023 10:00AM',
-          ),
-          // navigator: const RegistrationPage(),
+          // navigator:  Profile(
+          //   name: 'Felix',
+          //   nricFin: '12345678',
+          //   companyName: 'Digisailor',
+          //   designation: 'Sr. Developer',
+          //   phone: '9677998011',
+          //   person: 'Rajesh',
+          //   place: 'Head Quaters',
+          //   purpose: 'Interview',
+          //   inTime: '31 - 08 - 2023 10:00AM',
+          // ),
+          navigator: const RegistrationPage(),
           durationInSeconds: 2,
         ));
   }

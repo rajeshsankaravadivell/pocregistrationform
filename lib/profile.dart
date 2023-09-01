@@ -65,15 +65,15 @@ class _ProfileState extends State<Profile> {
                     Text(
                       "NRIC / FIN : ${widget.nricFin}",
                       style: const TextStyle(
-                          fontSize: 18, fontWeight: FontWeight.bold),
+                          fontSize: 14, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(
                       height: 5,
                     ),
                     Text(
-                      "Company : ${widget.companyName}",
+                      "Organisation : ${widget.companyName}",
                       style: const TextStyle(
-                          fontSize: 18, fontWeight: FontWeight.bold),
+                          fontSize: 14, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(
                       height: 15,
@@ -104,7 +104,7 @@ class _ProfileState extends State<Profile> {
                         "This pass is provided to visit Mr.${widget.person} in the department of ${widget.place} for the purpose of ${widget.purpose}",
                         textAlign: TextAlign.center,
                         style: const TextStyle(
-                            fontSize: 16,
+                            fontSize: 14,
                             fontWeight: FontWeight.bold,
                             color: Colors.black),
                       ),
@@ -118,9 +118,9 @@ class _ProfileState extends State<Profile> {
                         "Please take a screenshot of this page and present it to security when you leave onsite",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: 18,
+                            fontSize: 16,
                             fontWeight: FontWeight.bold,
-                            color: Colors.redAccent),
+                            color: Colors.redAccent  ),
                       ),
                     ),
                   ],

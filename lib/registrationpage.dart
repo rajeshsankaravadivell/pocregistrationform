@@ -94,9 +94,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
         MaterialState.focused,
       };
       if (states.any(interactiveStates.contains)) {
-        return Colors.blue;
+        return Colors.red;
       }
-      return Colors.red;
+      return Colors.green;
     }
 
     return Scaffold(
@@ -146,7 +146,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
               ),
               CustomTextField(
                 sufficicon: const Icon(Icons.location_city_outlined),
-                label: 'CompanyName',
+                label: 'Organisation',
                 hintext: 'Enter Your organisation',
                 controller: companyNameController,
               ),
@@ -290,7 +290,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(content: Text('Processing Data')),
                       );
-
                       await addVisitor({
                         "Name": nameController.text,
                         "nricFin": nricFin.text,
@@ -329,17 +328,15 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     padding: EdgeInsets.all(8.0),
                     child: Text(
                       'Submit',
-                      style: TextStyle(color: Colors.black),
+                      style: TextStyle(color: Colors.white),
                     ),
                   )),
-
               const Padding(
                 padding: EdgeInsets.only(
-                  top: 20,
+                  top: 20,bottom: 10
                 ),
                 child: Text('Powered by '),
               ),
-
               Image.network(
                 'https://www.digisailor.com/assets/img/digisailorlogo.png',
                 height: 100,
