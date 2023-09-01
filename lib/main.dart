@@ -1,16 +1,11 @@
-
 import 'package:easy_splash_screen/easy_splash_screen.dart';
-import 'package:flutter/material.dart';
-
-
-
 import 'package:firebase_core/firebase_core.dart';
-import 'package:pocregistrationform/registrationpage.dart';
+import 'package:flutter/material.dart';
+import 'package:pocregistrationform/profile.dart';
 
 import 'firebase_options.dart';
 
-
-Future<void> main()  async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -25,40 +20,44 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home:
-      EasySplashScreen(
-        logo: Image.network(
-            'https://www.digisailor.com/assets/img/digisailorlogo.png'),
-        title: Text(
-          "Welcome",
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          // This is the theme of your application.
+          //
+          // Try running your application with "flutter run". You'll see the
+          // application has a blue toolbar. Then, without quitting the app, try
+          // changing the primarySwatch below to Colors.green and then invoke
+          // "hot reload" (press "r" in the console where you ran "flutter run",
+          // or simply save your changes to "hot reload" in a Flutter IDE).
+          // Notice that the counter didn't reset back to zero; the application
+          // is not restarted.
+          primarySwatch: Colors.blue,
         ),
-        backgroundColor: Colors.white,
-        showLoader: true,
-        loadingText: Text("Loading..."),
-        navigator:RegistrationPage(),
-        durationInSeconds: 2,
-
-      )
-    );
+        home: EasySplashScreen(
+          logo: Image.network(
+              'https://www.digisailor.com/assets/img/digisailorlogo.png'),
+          title: const Text(
+            "Welcome",
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          backgroundColor: Colors.white,
+          showLoader: true,
+          loadingText: const Text("Loading..."),
+          navigator: const Profile(
+            name: '',
+            nricFin: '',
+            companyName: '',
+            designation: '',
+            phone: '',
+            person: '',
+            place: '',
+            purpose: '',
+            inTime: '',
+          ),
+          durationInSeconds: 2,
+        ));
   }
 }
-
-
-
