@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class Profile extends StatefulWidget {
   const Profile(
@@ -38,17 +39,19 @@ class _ProfileState extends State<Profile> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(top: 10),
-                child: Center(child: SizedBox(
-                  width: 200,
-                  height: 80,
-                  child: Image.asset("logo.jpeg"))),
+                child: Center(
+                    child: SizedBox(
+                        width: 200,
+                        height: 80,
+                        child: Image.asset("assets/logo.jpeg"))),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 10),
-                child: Center(child: SizedBox(
-                  width: 300,
-                  height: 150,
-                  child: Image.asset("thumps.png"))),
+                child: Center(
+                    child: SizedBox(
+                        width: 300,
+                        height: 150,
+                        child: Image.asset("thumps.png"))),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 20, bottom: 20),
@@ -57,7 +60,7 @@ class _ProfileState extends State<Profile> {
                     Text(
                       "Name : ${widget.name} / ${widget.designation}",
                       style: const TextStyle(
-                          fontSize: 18, fontWeight: FontWeight.bold),
+                          fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(
                       height: 5,
@@ -65,7 +68,7 @@ class _ProfileState extends State<Profile> {
                     Text(
                       "NRIC / FIN : ${widget.nricFin}",
                       style: const TextStyle(
-                          fontSize: 14, fontWeight: FontWeight.bold),
+                          fontSize: 12, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(
                       height: 5,
@@ -73,13 +76,13 @@ class _ProfileState extends State<Profile> {
                     Text(
                       "Organisation : ${widget.companyName}",
                       style: const TextStyle(
-                          fontSize: 14, fontWeight: FontWeight.bold),
+                          fontSize: 12, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(
                       height: 15,
                     ),
                     Text(
-                      "DATE : ${widget.inTime}",
+                      "DATE : ${DateFormat('dd-MM-yyyy hh:mm a').format(DateTime.parse(widget.inTime))}",
                       style: const TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
@@ -95,7 +98,7 @@ class _ProfileState extends State<Profile> {
                           fontWeight: FontWeight.bold,
                           color: Colors.green),
                     ),
-                     const SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     SizedBox(
@@ -120,24 +123,24 @@ class _ProfileState extends State<Profile> {
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
-                            color: Colors.redAccent  ),
+                            color: Colors.redAccent),
                       ),
                     ),
                   ],
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.only(top: 5, bottom: 10),
-                child: Text(
-                  'Powered by ',
-                  style: TextStyle(color: Colors.green),
-                ),
-              ),
-              Image.network(
-                'https://www.digisailor.com/assets/img/digisailorlogo.png',
-                height: 100,
-                width: 100,
-              ),
+              // const Padding(
+              //   padding: EdgeInsets.only(top: 5, bottom: 10),
+              //   child: Text(
+              //     'Powered by ',
+              //     style: TextStyle(color: Colors.green),
+              //   ),
+              // ),
+              // Image.asset(
+              //   "assets/logo.jpeg",
+              //   height: 50,
+              //   width: 100,
+              // ),
               const SizedBox(
                 height: 20,
               )

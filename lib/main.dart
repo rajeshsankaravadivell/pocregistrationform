@@ -34,12 +34,12 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         home: EasySplashScreen(
-          logo: Image.network(
-              'https://www.digisailor.com/assets/img/digisailorlogo.png'),
+          logo: Image.asset("assets/logo.jpeg"),
           title: const Text(
             "Welcome",
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 30,
+              color: Colors.green,
               fontWeight: FontWeight.bold,
             ),
           ),

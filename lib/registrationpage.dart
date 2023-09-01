@@ -2,8 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pocregistrationform/profile.dart';
-import 'package:pocregistrationform/qrview.dart';
-import 'package:qr_flutter/qr_flutter.dart';
 
 class RegistrationPage extends StatefulWidget {
   const RegistrationPage({Key? key}) : super(key: key);
@@ -41,48 +39,30 @@ class _RegistrationPageState extends State<RegistrationPage> {
   bool termsConditons = false;
   bool approved = false;
 
-  Future<void> addVisitor(dynamic myData) {
-    // Call the user's CollectionReference to add a new user
-    return users.doc(phoneController.text).set(myData).then((value) {
-      if (isChecked == false || termsConditons == false || approved == false) {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          content:
-              Text('You will not allowed to visit without Covid certificate '),
-          duration: Duration(seconds: 3),
-          backgroundColor: Colors.red,
-        ));
-      } else {
-        showDialog<String>(
-          context: context,
-          builder: (BuildContext context) => AlertDialog(
-            title: const Text('Please verify your QR code'),
-            content: SizedBox(
-              height: 300,
-              width: 300,
-              child: Card(
-                child: Center(
-                  child: QrImageView(
-                    data: nameController.text,
-                  ),
-                ),
-              ),
-            ),
-            actions: <Widget>[
-              TextButton(
-                onPressed: () => Navigator.pop(context, 'Cancel'),
-                child: const Text('Cancel'),
-              ),
-              TextButton(
-                onPressed: () => Navigator.pop(context, 'OK'),
-                child: const Text('OK'),
-              ),
-            ],
-          ),
-        );
-      }
-    }).catchError((error) => ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Failed to save data')),
-        ));
+  addVisitor(dynamic myData) {
+    if (termsConditons == false || approved == false) {
+      return ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text('Please accept the Terms & Conditions for Submit'),
+        duration: Duration(seconds: 3),
+        backgroundColor: Colors.red,
+      ));
+    } else {
+      // Call the user's CollectionReference to add a new user
+      return users.doc(phoneController.text).set(myData).then((value) {
+        if (isChecked == false &&
+            termsConditons == false &&
+            approved == false) {
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text(
+                'You will not allowed to visit without Covid certificate '),
+            duration: Duration(seconds: 3),
+            backgroundColor: Colors.red,
+          ));
+        }
+      }).catchError((error) => ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Failed to save data')),
+          ));
+    }
   }
 
   @override
@@ -103,16 +83,16 @@ class _RegistrationPageState extends State<RegistrationPage> {
       appBar: AppBar(
         centerTitle: true,
         title: const Text('Registration'),
-        actions: [
-          IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const QRviewpage()),
-                );
-              },
-              icon: const Icon(Icons.document_scanner_outlined))
-        ],
+        // actions: [
+        // IconButton(
+        //     onPressed: () {
+        //       Navigator.push(
+        //         context,
+        //         MaterialPageRoute(builder: (context) => const QRviewpage()),
+        //       );
+        //     },
+        //     icon: const Icon(Icons.document_scanner_outlined))
+        // ],
       ),
       body: Form(
         key: _formKey,
@@ -163,13 +143,28 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   if (value == null || value.isEmpty) {
                     return 'Please enter Your Phone number';
                   }
+                   if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
+                    return 'Please enter a valid number';
+                  }
                   return null;
                 },
                 label: 'Phone',
-                hintext: '+91 ',
+                hintext: '+65 ',
                 controller: phoneController,
               ),
               CustomTextField(
+                 validator: (value) {
+                  if (value!.isEmpty) {
+                    return null;
+                  }
+                  // Use a regex pattern to check if the input is a valid email address.
+                  // This is a simple regex for demonstration purposes; you can use a more
+                  // comprehensive email regex pattern if needed.
+                  if (!RegExp(r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$').hasMatch(value)) {
+                    return 'Please enter a valid email address';
+                  }
+                  return null; // Return null if the input is valid.
+                },
                 sufficicon: const Icon(Icons.mail),
                 label: 'Email',
                 hintext: 'name@gmail.com',
@@ -213,6 +208,16 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   hintext: 'Enter the purpose',
                   controller: purposeofvisit),
               CustomTextField(
+                inputFormatters: [LengthLimitingTextInputFormatter(10)],
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return null;
+                  }
+                   if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
+                    return 'Please enter a valid number';
+                  }
+                  return null;
+                },
                 maxlength: 1,
                 sufficicon: const Icon(Icons.person),
                 // validator: (value) {
@@ -332,14 +337,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     ),
                   )),
               const Padding(
-                padding: EdgeInsets.only(
-                  top: 20,bottom: 10
-                ),
+                padding: EdgeInsets.only(top: 20, bottom: 10),
                 child: Text('Powered by '),
               ),
-              Image.network(
-                'https://www.digisailor.com/assets/img/digisailorlogo.png',
-                height: 100,
+              Image.asset(
+                "assets/logo.jpeg",
+                height: 50,
                 width: 100,
               ),
             ],
