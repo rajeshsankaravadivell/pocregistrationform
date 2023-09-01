@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "465766097153",
+    "project_id": "pocregister-7ef18",
+    "storage_bucket": "pocregister-7ef18.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:465766097153:android:fd8e1a7a8b118420bdfb00",
+        "android_client_info": {
+          "package_name": "com.register.pocregistrationform"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "465766097153-4r4086bl63shige332c0sm2ne6qpak4a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTyZugMXCcFXoFkWcNLXYow-KzY9AIeh4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "465766097153-4r4086bl63shige332c0sm2ne6qpak4a.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "465766097153-bjdog0a9fn5rjhi9ebrulm9rf844se6s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.register.pocregistrationform.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
